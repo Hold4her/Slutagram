@@ -1,0 +1,288 @@
+ 
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #fafafa;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 245px;
+      height: 100vh;
+      background: #fff;
+      border-right: 1px solid #dbdbdb;
+      display: flex;
+      flex-direction: column;
+      padding: 12px 12px 20px;
+      z-index: 100;
+    }
+
+    .sidebar-logo {
+      padding: 18px 12px 24px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #000;
+      text-decoration: none;
+      display: block;
+      font-family: cursive;
+    }
+    .sidebar-logo:hover { color: #000; }
+
+    .nav-link-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px;
+      border-radius: 12px;
+      color: #000;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 400;
+      transition: background 0.15s ease;
+      margin-bottom: 4px;
+    }
+    .nav-link-item:hover { background: #f0f0f0; color: #000; }
+    .nav-link-item.active { font-weight: 600; }
+    .nav-link-item i { font-size: 1.5rem; min-width: 28px; }
+    .sidebar-bottom { margin-top: auto; }
+
+    /* ── Main Layout ── */
+    .main-content {
+      margin-left: 245px;
+      min-height: 100vh;
+      background: #fafafa;
+      display: flex;
+      justify-content: center;
+      padding: 32px 20px;
+    }
+
+    .feed-wrapper {
+      width: 100%;
+      max-width: 470px;
+    }
+
+    /* ── Stories Bar ── */
+    .stories-bar {
+      background: #fff;
+      border: 1px solid #dbdbdb;
+      border-radius: 8px;
+      padding: 16px 8px;
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      margin-bottom: 24px;
+      scrollbar-width: none;
+    }
+    .stories-bar::-webkit-scrollbar { display: none; }
+
+    .story {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .story-ring {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      padding: 2px;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+
+    .story-ring.seen {
+      background: #dbdbdb;
+    }
+
+    .story-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      object-fit: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #c7c7c7;
+      font-size: 1.6rem;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .story-name {
+      font-size: 0.72rem;
+      color: #262626;
+      max-width: 66px;
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .story-add {
+      background: #fff;
+      border: 1px solid #dbdbdb;
+    }
+    .story-add .story-ring {
+      background: #fff;
+      border: 2px solid #dbdbdb;
+      position: relative;
+    }
+    .story-add .story-avatar {
+      background: #fafafa;
+      color: #0095f6;
+      font-size: 1.4rem;
+      border: none;
+    }
+
+    /* ── Post Card ── */
+    .post-card {
+      background: #fff;
+      border: 1px solid #dbdbdb;
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+
+    .post-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+    }
+
+    .post-user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #262626;
+    }
+
+    .post-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
+      padding: 2px;
+    }
+
+    .post-avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #c7c7c7;
+      border: 2px solid #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    .post-username { font-weight: 600; font-size: 0.9rem; }
+    .post-location { font-size: 0.75rem; color: #8e8e8e; }
+
+    .post-more { color: #262626; font-size: 1.2rem; cursor: pointer; background: none; border: none; }
+
+    /* Post image placeholder */
+    .post-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: linear-gradient(135deg, #c7c7c7 0%, #e0e0e0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    /* Post actions */
+    .post-actions {
+      display: flex;
+      align-items: center;
+      padding: 10px 16px 4px;
+      gap: 16px;
+    }
+
+    .post-actions .right { margin-left: auto; }
+
+    .action-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: #262626;
+      padding: 4px;
+      transition: transform 0.1s ease;
+    }
+    .action-btn:hover { transform: scale(1.1); }
+    .action-btn.liked { color: #ed4956; }
+
+    .post-likes {
+      padding: 4px 16px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #262626;
+    }
+
+    .post-caption {
+      padding: 2px 16px 6px;
+      font-size: 0.875rem;
+      color: #262626;
+      line-height: 1.5;
+    }
+    .post-caption span { font-weight: 600; margin-right: 4px; }
+
+    .post-comments-link {
+      padding: 0 16px 6px;
+      font-size: 0.875rem;
+      color: #8e8e8e;
+      cursor: pointer;
+      display: block;
+    }
+
+    .post-time {
+      padding: 2px 16px 12px;
+      font-size: 0.72rem;
+      color: #8e8e8e;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    /* Add comment */
+    .post-add-comment {
+      border-top: 1px solid #efefef;
+      display: flex;
+      align-items: center;
+      padding: 10px 16px;
+      gap: 10px;
+    }
+
+    .comment-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 0.875rem;
+      color: #262626;
+    }
+    .comment-input::placeholder { color: #8e8e8e; }
+
+    .comment-post-btn {
+      background: none;
+      border: none;
+      color: #0095f6;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      opacity: 0.4;
+    }
+    .comment-post-btn.active { opacity: 1; }
